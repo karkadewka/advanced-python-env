@@ -1,6 +1,5 @@
 n = int(input())
 letters = "ABCEHKMOPTXY"
-digits = "0123456789"
 
 for _ in range(n):
     s = input()
