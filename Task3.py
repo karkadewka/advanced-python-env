@@ -1,23 +1,22 @@
 import math
 
-def hypotenuse(a, b):
-    return math.sqrt(a*a + b*b)
+a = int(input(":"))
+b = int(input(":"))
+c = (a*a + b*b) ** 0.5
 
-a1, b1 = map(float, input("Triangle 1:").split())
-a2, b2 = map(float, input("Triangle 2:").split())
+x = int(input(":"))
+y = int(input(":"))
+d = (x*x + y*y) ** 0.5
 
-h1 = hypotenuse(a1, b1)
-h2 = hypotenuse(a2, b2)
+print(c)
+print(d)
 
-print("Hypo1:", h1)
-print("Hypo2:", h2)
-
-if h1 > h2:
-    print("1st is greater")
+if c > d:
+    print("1st is bigger")
 else:
-    print("2nd is greater")
+    print("2nd is bigger")
 
-s = input("Enter string: ")
+s = input("Write ur string:")
 words = s.split()
-sorted_words = ["".join(sorted(w)) for w in words]
-print(" ".join(sorted_words))
+for w in words:
+    print("".join(sorted(w)), end=" ")
