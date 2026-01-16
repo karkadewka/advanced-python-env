@@ -1,28 +1,28 @@
+import string
 import re
+def main(text,new_text):
+    try:
+        with open(text, "r" , encoding="UTF-8") as f:
+            text=f.read().lower()
+            lines=text.splitlines()
+        total_lines = len(lines)
+        words=re.findall(r'\w+',text)
+        number_words=len(words)
+        frequency_words={}
 
-def analyze_file(input_file, output_file):
-    with open(input_file, "r", encoding="utf-8") as file:
-        lines = file.readlines()
-
-    line_count = len(lines)
-    word_freq = {}
-    word_count = 0
-
-    for line in lines:
-        words = re.findall(r"[a-zA-Z0-9]+", line.lower())
-        word_count += len(words)
-
-        for w in words:
-            word_freq[w] = word_freq.get(w, 0) + 1
-
-    with open(output_file, "w", encoding="utf-8") as result:
-        result.write(f"Total lines: {line_count}\n")
-        result.write(f"Total words: {word_count}\n")
-        result.write("Word frequency:\n")
-
-        for word in word_freq:
-            result.write(f"{word} - {word_freq[word]}\n")
-
+        for word in words:
+            if word in frequency_words:
+                frequency_words[word]+=1
+            else:
+                frequency_words[word]=1
+        with open (new_text,"w", encoding="UTF-8") as o:
+            o.write(f"number of words: {number_words}\nnumber of lines: {total_lines}\n")
+            o.write(f"frequency of words:\n")
+            for key,value in frequency_words.items():
+                o.write(f"{key}:{value}\n")
+    except FileNotFoundError:
+        print("FILE NOT FOUND")
 
 if __name__ == "__main__":
-    analyze_file("text.txt", "analysis.txt")
+    main("text.txt", "analysis.txt")
+
